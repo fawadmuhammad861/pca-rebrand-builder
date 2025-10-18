@@ -4,20 +4,22 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { MapPin, Calendar, Sparkles } from "lucide-react";
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
 
   const categories = [
-    { id: "all", name: "All Projects" },
-    { id: "retail-interiors", name: "Retail Interiors" },
-    { id: "mall-booths", name: "Mall & Shop Booths" },
-    { id: "stage-events", name: "Stage & Event Sets" },
-    { id: "windows-displays", name: "Windows & Displays" },
-    { id: "acrylic-specialty", name: "Acrylic & Specialty" },
-    { id: "printing-signage", name: "Large-Format Printing" },
-    { id: "workshop", name: "Workshop & Process" },
-    { id: "other", name: "Other Works" },
+    { id: "all", name: "All Projects", count: 1000 },
+    { id: "retail-interiors", name: "Retail Interiors", count: 250 },
+    { id: "mall-booths", name: "Mall & Shop Booths", count: 180 },
+    { id: "stage-events", name: "Stage & Event Sets", count: 120 },
+    { id: "windows-displays", name: "Windows & Displays", count: 150 },
+    { id: "acrylic-specialty", name: "Acrylic & Specialty", count: 100 },
+    { id: "printing-signage", name: "Large-Format Printing", count: 90 },
+    { id: "workshop", name: "Workshop & Process", count: 60 },
+    { id: "other", name: "Other Works", count: 50 },
   ];
 
   const projects = [
@@ -68,70 +70,112 @@ const Gallery = () => {
     <div className="min-h-screen">
       <Navigation />
       <main className="pt-20">
-        {/* Hero Section */}
-        <section className="py-24 bg-3d-pattern">
-          <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto text-center space-y-6">
-              <h1 className="font-brand text-5xl md:text-6xl font-bold">
-                Our Gallery
+        {/* Hero Section - Enhanced */}
+        <section className="relative py-32 bg-3d-pattern overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/50" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in">
+              <Badge variant="outline" className="text-gold border-gold/50 mb-4">
+                <Sparkles className="w-3 h-3 mr-1" />
+                1,000+ Completed Projects
+              </Badge>
+              <h1 className="font-brand text-6xl md:text-8xl font-bold">
+                Our <span className="text-gradient-gold">Portfolio</span>
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Explore our portfolio of luxury retail installations across the globe
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
+                Luxury retail installations that define excellence across KSA, UAE, USA, and Canada
               </p>
             </div>
           </div>
         </section>
 
-        {/* Filters */}
-        <section className="py-8 bg-card border-b border-border sticky top-20 z-40">
+        {/* Filters - Modern Pills */}
+        <section className="py-12 bg-card/50 backdrop-blur-sm border-y border-border sticky top-20 z-40">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap gap-2 justify-center">
+            <div className="flex flex-wrap gap-3 justify-center max-w-5xl mx-auto">
               {categories.map((category) => (
-                <Button
+                <button
                   key={category.id}
-                  variant={selectedCategory === category.id ? "default" : "outline"}
-                  size="sm"
                   onClick={() => setSelectedCategory(category.id)}
+                  className={`group relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    selectedCategory === category.id
+                      ? "bg-gradient-to-r from-gold to-gold-dark text-black shadow-gold scale-105"
+                      : "bg-background/50 text-muted-foreground hover:text-foreground hover:bg-background border border-border hover:border-gold/30"
+                  }`}
                 >
-                  {category.name}
-                </Button>
+                  <span className="flex items-center gap-2">
+                    {category.name}
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      selectedCategory === category.id
+                        ? "bg-black/20"
+                        : "bg-primary/10"
+                    }`}>
+                      {category.count}+
+                    </span>
+                  </span>
+                </button>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Projects Grid */}
-        <section className="py-16 bg-background">
+        {/* Projects Grid - Modern Cards */}
+        <section className="py-24 bg-background">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
               {filteredProjects.map((project, index) => (
                 <Card
                   key={project.id}
-                  className="group overflow-hidden hover:shadow-gold transition-all duration-300 cursor-pointer animate-fade-in"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="group relative overflow-hidden hover:shadow-gold transition-all duration-500 cursor-pointer animate-fade-in border-border/50"
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
                   <CardContent className="p-0">
-                    {/* Image Placeholder */}
-                    <div className="aspect-[4/3] bg-gradient-to-br from-secondary via-secondary/90 to-secondary/80 flex items-center justify-center relative overflow-hidden group-hover:scale-105 transition-transform duration-300">
-                      <div className="text-center p-6">
-                        <Badge variant="outline" className="mb-4 border-primary text-primary">
+                    {/* Image Placeholder with Overlay */}
+                    <div className="aspect-[4/3] bg-gradient-to-br from-secondary via-secondary/90 to-secondary/80 flex items-center justify-center relative overflow-hidden">
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+                      
+                      {/* Content */}
+                      <div className="text-center p-8 relative z-20 group-hover:scale-110 transition-transform duration-500">
+                        <Badge variant="outline" className="mb-4 border-gold text-gold bg-black/20 backdrop-blur-sm">
                           {project.brand}
                         </Badge>
-                        <h3 className="font-brand text-2xl font-bold text-primary">
+                        <h3 className="font-brand text-2xl md:text-3xl font-bold text-gradient-gold">
                           {project.title}
                         </h3>
+                      </div>
+
+                      {/* Category Badge - Top Right */}
+                      <div className="absolute top-4 right-4 z-20">
+                        <Badge className="bg-black/50 backdrop-blur-sm border-gold/30">
+                          {categories.find(c => c.id === project.category)?.name || "Project"}
+                        </Badge>
                       </div>
                     </div>
 
                     {/* Project Info */}
-                    <div className="p-6 space-y-3">
-                      <h3 className="font-heading text-xl font-semibold line-clamp-2">
+                    <div className="p-6 space-y-4 bg-card group-hover:bg-card/50 transition-colors">
+                      <h3 className="font-heading text-xl font-bold line-clamp-2 group-hover:text-gold transition-colors">
                         {project.title}
                       </h3>
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <span>{project.region}</span>
-                        <span>{project.year}</span>
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <MapPin className="w-4 h-4" />
+                          <span>{project.region}</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <Calendar className="w-4 h-4" />
+                          <span>{project.year}</span>
+                        </div>
                       </div>
+                      
+                      {/* View Details Button */}
+                      <Button 
+                        variant="ghost" 
+                        className="w-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gold hover:text-gold-dark hover:bg-gold/10"
+                      >
+                        View Project Details
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -139,12 +183,33 @@ const Gallery = () => {
             </div>
 
             {filteredProjects.length === 0 && (
-              <div className="text-center py-16">
-                <p className="text-xl text-muted-foreground">
-                  No projects found in this category.
+              <div className="text-center py-24">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-muted mb-6">
+                  <Sparkles className="w-10 h-10 text-muted-foreground" />
+                </div>
+                <h3 className="text-2xl font-heading font-semibold mb-2">No projects found</h3>
+                <p className="text-lg text-muted-foreground">
+                  Try selecting a different category to explore our work.
                 </p>
               </div>
             )}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-24 bg-gradient-to-br from-secondary via-secondary to-muted border-t border-border">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto text-center space-y-8">
+              <h2 className="font-brand text-4xl md:text-6xl font-bold">
+                Start Your <span className="text-gradient-gold">Next Project</span>
+              </h2>
+              <p className="text-xl text-muted-foreground">
+                Join the world's leading luxury brands who trust us with their retail experiences.
+              </p>
+              <Button asChild size="lg" className="text-lg px-8">
+                <a href="/contact">Get in Touch</a>
+              </Button>
+            </div>
           </div>
         </section>
       </main>
