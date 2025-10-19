@@ -203,6 +203,30 @@ export default function AboutPage() {
       {/* Global Presence */}
       <section className="bg-card py-24">
         <div className="mx-auto max-w-6xl px-6">
+          {/* Country Flags */}
+          <div className="animate-on-scroll flex justify-center items-center gap-4 md:gap-8 mb-12">
+            {[
+              { flag: "🇸🇦", name: "Saudi Arabia" },
+              { flag: "🇦🇪", name: "UAE" },
+              { flag: "🇺🇸", name: "United States" },
+              { flag: "🇨🇦", name: "Canada" }
+            ].map((country, index) => (
+              <div 
+                key={country.name} 
+                className="group relative"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary/10 to-gold/10 border-2 border-primary/20 flex items-center justify-center text-4xl md:text-5xl transition-all duration-300 hover:scale-110 hover:border-primary/40 hover:shadow-xl cursor-pointer">
+                  {country.flag}
+                </div>
+                {/* Tooltip */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  <span className="text-xs font-medium text-muted-foreground whitespace-nowrap">{country.name}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
           <div className="animate-on-scroll text-center mb-16">
             <h2 className="font-brand text-4xl md:text-5xl font-bold text-primary mb-6">
               Global <span className="text-gradient-gold">Presence</span>
@@ -214,14 +238,14 @@ export default function AboutPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {[
-              { country: "Saudi Arabia", city: "Riyadh", projects: "400+", year: "2009" },
-              { country: "UAE", city: "Dubai", projects: "300+", year: "2012" },
-              { country: "United States", city: "New York", projects: "200+", year: "2018" },
-              { country: "Canada", city: "Toronto", projects: "100+", year: "2018" }
+              { country: "Saudi Arabia", city: "Riyadh", projects: "400+", year: "2009", flag: "🇸🇦" },
+              { country: "UAE", city: "Dubai", projects: "300+", year: "2012", flag: "🇦🇪" },
+              { country: "United States", city: "New York", projects: "200+", year: "2018", flag: "🇺🇸" },
+              { country: "Canada", city: "Toronto", projects: "100+", year: "2018", flag: "🇨🇦" }
             ].map((location, index) => (
               <div key={location.country} className="animate-on-scroll group text-center p-8 bg-background/50 rounded-2xl border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary to-gold rounded-full flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform duration-300">
-                  {index + 1}
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary/10 to-gold/10 border-2 border-primary/30 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300">
+                  {location.flag}
                 </div>
                 <h3 className="font-semibold text-lg text-primary mb-2">{location.country}</h3>
                 <p className="text-muted-foreground mb-2">{location.city}</p>
