@@ -48,7 +48,7 @@ All colors MUST be HSL.
     --black: 0 0% 0%;
     
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(39 40% 58%) 0%, hsl(39 50% 70%) 100%);
+    --gradient-gold: linear-gradient(135deg, #bfa169 0%, hsl(39 50% 70%) 100%);
     --gradient-luxury: linear-gradient(135deg, hsl(0 0% 0%) 0%, hsl(0 0% 15%) 100%);
     
     /* Shadows */
@@ -58,7 +58,8 @@ All colors MUST be HSL.
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
-
+.animate-on-scroll { opacity:0; transform:translateY(30px) }
+.animate-on-scroll.animate-in { opacity:1; transform:none }
   .dark {
     --background: 0 0% 5%;
     --foreground: 45 33% 97%;
@@ -88,6 +89,63 @@ All colors MUST be HSL.
     --input: 0 0% 15%;
     --ring: 39 40% 58%;
   }
+  @media (prefers-reduced-motion: reduce) {
+      .wave-slide, .wave-float { animation: none !important; }
+    }
+    @keyframes wave-slide {
+      0%   { transform: translateX(-15%); }
+      100% { transform: translateX(-115%); }
+    }
+    @keyframes wave-float {
+      0%   { transform: translateY(0); }
+      50%  { transform: translateY(-8px); }
+      100% { transform: translateY(0); }
+    }
+    
+    /* Hero Background Animations */
+    @keyframes float {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1);
+      }
+      33% { 
+        transform: translate(30px, -30px) scale(1.1);
+      }
+      66% { 
+        transform: translate(-20px, 20px) scale(0.9);
+      }
+    }
+    
+    @keyframes float-delayed {
+      0%, 100% { 
+        transform: translate(0, 0) scale(1);
+      }
+      33% { 
+        transform: translate(-40px, 30px) scale(1.15);
+      }
+      66% { 
+        transform: translate(25px, -25px) scale(0.85);
+      }
+    }
+    
+    @keyframes grid-flow {
+      0% { 
+        transform: translateX(0) translateY(0);
+      }
+      100% { 
+        transform: translateX(20px) translateY(20px);
+      }
+    }
+    
+    @keyframes pulse-slow {
+      0%, 100% { 
+        opacity: 0.2;
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 0.4;
+        transform: scale(1.05);
+      }
+    }
 }
 
 @layer base {
@@ -159,5 +217,39 @@ All colors MUST be HSL.
 
   .perspective-1000 {
     perspective: 1000px;
+  }
+  
+  /* Hero Background Animations */
+  .animate-float {
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .animate-float-delayed {
+    animation: float-delayed 10s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+  }
+  
+  .animate-grid-flow {
+    animation: grid-flow 20s linear infinite;
+  }
+  
+  /* Background Patterns */
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(to right, hsl(var(--gold) / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--gold) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  
+  .bg-radial-gradient-gold {
+    background: radial-gradient(
+      circle at center,
+      hsl(var(--gold) / 0.3) 0%,
+      hsl(var(--gold) / 0.1) 40%,
+      transparent 70%
+    );
   }
 }

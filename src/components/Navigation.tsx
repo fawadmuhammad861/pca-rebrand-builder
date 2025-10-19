@@ -23,9 +23,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <span className="font-brand text-2xl font-bold text-foreground tracking-tight">
-              PCA
-            </span>
+           <img src="/logo.png" alt="Logo" className="w-24 h-24" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -43,12 +41,11 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* <div className="hidden md:block">
             <Button asChild variant="default" size="default">
               <Link to="/contact">Start Your Project</Link>
             </Button>
-          </div>
+          </div> */}
 
           {/* Mobile Menu Button */}
           <button
@@ -76,11 +73,11 @@ const Navigation = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button asChild variant="default" size="default" className="w-full">
+              {/* <Button asChild variant="default" size="default" className="w-full">
                 <Link to="/contact" onClick={() => setIsOpen(false)}>
                   Start Your Project
                 </Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         )}
