@@ -85,7 +85,7 @@ export default function AboutPage() {
             <div className={`mb-12 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
               <Badge variant="outline" className="text-gold border-gold/50 mb-6">
                 <Sparkles className="w-3 h-3 mr-1" />
-                15+ Years of Excellence
+                16+ Years of Excellence
               </Badge>
               
               <h1 className="font-brand text-5xl md:text-7xl font-bold mb-6 leading-tight">
@@ -135,15 +135,15 @@ export default function AboutPage() {
                 
                 <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
                   <p>
-                    Private Collection Arabia was founded with a singular vision: to transform luxury retail spaces into iconic experiences that captivate customers and elevate brands. What began as a small fabrication workshop in Riyadh has evolved into a premier luxury retail fabrication company spanning four countries.
+                    Private Collection Arabia is an inter-connected global network of leading manufacturing and designing retail visual merchandising for all high-end brands around the world. We provide the best talent, creativity, technology and innovation to some of the world's most iconic and successful brands, offering comprehensive marketing solutions spanning brand advertising and specialty services.
                   </p>
                   
                   <p>
-                    Our journey has been marked by continuous innovation, unwavering commitment to quality, and partnerships with the world's most prestigious luxury brands. From the first DIOR installation in Dubai to our Guinness World Record achievement, every project has been a testament to our dedication to excellence.
+                    We are specialists with turnkey solutions - a single stop destination for top brands for all advertising and marketing solutions. Our journey has been marked by continuous innovation, unwavering commitment to quality, and partnerships with prestigious luxury brands. From DIOR Backstage installations to our Guinness World Record achievement with LACOSTE, every project demonstrates our dedication to excellence.
                   </p>
                   
                   <p>
-                    Today, with over 120,000 square feet of state-of-the-art facilities and a team of 80+ specialists, we continue to push the boundaries of what's possible in luxury retail fabrication, delivering turnkey solutions that set the benchmark for the industry.
+                    Today, with over 120,000 square feet of state-of-the-art facilities across 6 locations and a team of 80+ highly skilled specialists, we continue to push the boundaries of luxury retail fabrication. Our in-house capabilities include woodwork, acrylic work, metal work, painting, and a printing house - delivering complete turnkey solutions with logistical support both locally and internationally.
                   </p>
                 </div>
               </div>
@@ -151,7 +151,7 @@ export default function AboutPage() {
               {/* Key Achievements */}
               <div className="grid grid-cols-2 gap-6 pt-8">
                 <div className="text-center p-6 bg-card/50 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
-                  <div className="text-3xl font-bold text-primary">15+</div>
+                  <div className="text-3xl font-bold text-primary">16+</div>
                   <div className="text-sm text-muted-foreground mt-1">Years of Excellence</div>
                 </div>
                 <div className="text-center p-6 bg-card/50 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
@@ -232,25 +232,30 @@ export default function AboutPage() {
               Global <span className="text-gradient-gold">Presence</span>
             </h2>
             <p className="mx-auto max-w-3xl text-xl text-muted-foreground">
-              Serving luxury brands across four countries with state-of-the-art facilities and local expertise.
+              Serving luxury brands across 6 strategic locations in four countries with state-of-the-art facilities and local expertise.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {[
-              { country: "Saudi Arabia", city: "Riyadh", projects: "400+", year: "2009", flag: "🇸🇦" },
-              { country: "UAE", city: "Dubai", projects: "300+", year: "2012", flag: "🇦🇪" },
-              { country: "United States", city: "New York", projects: "200+", year: "2018", flag: "🇺🇸" },
-              { country: "Canada", city: "Toronto", projects: "100+", year: "2018", flag: "🇨🇦" }
+              { country: "Saudi Arabia", city: "Riyadh", projects: "400+", year: "2009", flag: "🇸🇦", info: "Headquarters" },
+              { country: "Saudi Arabia", city: "Dammam", projects: "200+", year: "2010", flag: "🇸🇦", info: "Regional Hub" },
+              { country: "Saudi Arabia", city: "Jeddah", projects: "250+", year: "2011", flag: "🇸🇦", info: "Western Region" },
+              { country: "UAE", city: "Dubai", projects: "300+", year: "2012", flag: "🇦🇪", info: "Gulf Operations" },
+              { country: "United States", city: "Houston, Texas", projects: "100+", year: "2018", flag: "🇺🇸", info: "North America" },
+              { country: "Canada", city: "Toronto, Ontario", projects: "100+", year: "2018", flag: "🇨🇦", info: "North America" }
             ].map((location, index) => (
-              <div key={location.country} className="animate-on-scroll group text-center p-8 bg-background/50 rounded-2xl border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
+              <div key={`${location.country}-${location.city}`} className="animate-on-scroll group text-center p-8 bg-background/50 rounded-2xl border border-primary/20 hover:border-primary/40 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl">
                 <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary/10 to-gold/10 border-2 border-primary/30 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300">
                   {location.flag}
                 </div>
-                <h3 className="font-semibold text-lg text-primary mb-2">{location.country}</h3>
-                <p className="text-muted-foreground mb-2">{location.city}</p>
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold rounded-full mb-3">
+                  {location.info}
+                </div>
+                <h3 className="font-semibold text-lg text-primary mb-1">{location.country}</h3>
+                <p className="text-muted-foreground mb-3">{location.city}</p>
                 <div className="text-2xl font-bold text-gold mb-1">{location.projects}</div>
-                <div className="text-sm text-muted-foreground">Projects Since {location.year}</div>
+                <div className="text-sm text-muted-foreground">Since {location.year}</div>
               </div>
             ))}
           </div>
@@ -448,7 +453,7 @@ export default function AboutPage() {
                   <div className="text-muted-foreground">Specialized Team Members</div>
                 </div>
                 <div className="space-y-4">
-                  <div className="text-4xl font-bold text-primary">15+</div>
+                  <div className="text-4xl font-bold text-primary">16+</div>
                   <div className="text-muted-foreground">Average Years Experience</div>
                 </div>
                 <div className="space-y-4">
@@ -627,39 +632,45 @@ const values = [
 const timeline = [
   {
     year: "2009",
-    title: "Foundation",
+    title: "Foundation in Riyadh",
     description:
-      "Private Collection Arabia was founded in Riyadh with a vision to transform luxury retail spaces through superior fabrication and installation services.",
+      "Private Collection Arabia was founded in Riyadh, Saudi Arabia, with a vision to transform luxury retail spaces through superior fabrication and installation services, establishing our headquarters and primary manufacturing facility.",
+  },
+  {
+    year: "2010-2011",
+    title: "Regional Expansion in KSA",
+    description:
+      "Expanded across Saudi Arabia with new facilities in Dammam (2010) and Jeddah (2011), establishing comprehensive coverage across the Kingdom to better serve luxury brands in the Eastern and Western regions.",
   },
   {
     year: "2012",
-    title: "First Major Project",
+    title: "Dubai Operations & DIOR Backstage",
     description:
-      "Completed our first flagship installation for a major luxury brand, establishing our reputation for excellence in the Middle East market.",
+      "Opened operations in Dubai, UAE, marking our first international expansion. Completed flagship DIOR Backstage installations, establishing our reputation for excellence in luxury brand retail experiences across the Gulf.",
   },
   {
     year: "2015",
     title: "ISO 9001:2015 Certification",
     description:
-      "Achieved ISO 9001:2015 certification, demonstrating our commitment to quality management and continuous improvement in all processes.",
+      "Achieved ISO 9001:2015 certification, demonstrating our commitment to quality management and continuous improvement in all manufacturing and installation processes.",
   },
   {
     year: "2018",
-    title: "International Expansion",
+    title: "North American Expansion",
     description:
-      "Expanded operations to UAE, USA, and Canada, establishing regional offices and fabrication facilities to serve global luxury brands.",
+      "Expanded to North America with facilities in Houston, Texas (USA) and Toronto, Ontario (Canada), establishing our presence as a truly global luxury retail fabrication company serving international brands.",
   },
   {
     year: "2023",
-    title: "Guinness World Record",
+    title: "Guinness World Record - LACOSTE",
     description:
-      "Achieved Guinness World Record for the largest cardboard sculpture, showcasing our innovation and technical excellence in unconventional materials.",
+      "Achieved Guinness World Record for the largest cardboard box sculpture with LACOSTE - a magnificent 4.67-meter tall Saudi palm tree made from 22,500 boxed perfumes at Mall of Arabia, Jeddah. This achievement showcased our innovation and technical excellence in creating extraordinary displays.",
   },
   {
     year: "2024",
-    title: "1,000+ Projects Milestone",
+    title: "1,000+ Projects & 120K Sq Ft Facilities",
     description:
-      "Completed our 1,000th project, marking a significant milestone in our journey and reinforcing our position as a leader in luxury retail fabrication.",
+      "Reached the milestone of 1,000+ completed projects across 6 locations with over 120,000 square feet of state-of-the-art manufacturing facilities and 80+ specialized team members, reinforcing our position as a leader in luxury retail fabrication.",
   },
 ];
 
@@ -667,7 +678,7 @@ const team = [
   {
     name: "Muhammad Saleem",
     role: "Chief Executive Officer",
-    bio: "Visionary leader with 15+ years of luxury retail experience, driving innovation and excellence across all operations and global markets.",
+    bio: "Visionary leader with 16+ years of luxury retail experience, driving innovation and excellence across all operations and global markets.",
     image: "/resources/workshop-wood.jpg",
   },
   {
@@ -679,8 +690,8 @@ const team = [
 ];
 
 const stats = [
-  { number: "15+", label: "Years Experience" },
+  { number: "16+", label: "Years Experience" },
   { number: "1,000+", label: "Projects Completed" },
   { number: "80+", label: "Team Members" },
-  { number: "4", label: "Countries Served" },
+  { number: "6", label: "Global Locations" },
 ];

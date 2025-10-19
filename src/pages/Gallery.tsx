@@ -231,8 +231,8 @@ const Gallery = () => {
   const stats = [
     { value: "1,000+", label: "Projects Delivered", icon: Target, color: "from-blue-500 to-blue-600" },
     { value: "25+", label: "Luxury Brands", icon: Trophy, color: "from-purple-500 to-purple-600" },
-    { value: "4", label: "Global Markets", icon: Globe, color: "from-green-500 to-green-600" },
-    { value: "15+", label: "Years Excellence", icon: Award, color: "from-amber-500 to-amber-600" },
+    { value: "6", label: "Global Locations", icon: Globe, color: "from-green-500 to-green-600" },
+    { value: "16+", label: "Years Excellence", icon: Award, color: "from-amber-500 to-amber-600" },
   ];
 
   return (

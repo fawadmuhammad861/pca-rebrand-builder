@@ -2,7 +2,7 @@ import { Building2, Award, Users, Briefcase, Factory } from "lucide-react";
 
 const TrustRow = () => {
   const stats = [
-    { icon: Building2, label: "Since 2009", value: "15+ Years" },
+    { icon: Building2, label: "Since 2009", value: "16+ Years" },
     { icon: Award, label: "ISO 9001:2015", value: "Certified" },
     { icon: Briefcase, label: "Projects", value: "1,000+" },
     { icon: Users, label: "Specialists", value: "80+" },

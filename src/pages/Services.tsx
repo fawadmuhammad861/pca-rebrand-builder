@@ -151,7 +151,7 @@ const Services = () => {
                 {[
                   { value: "120K+ sq ft", label: "Facilities", icon: Building2, color: "from-blue-500 to-blue-600" },
                   { value: "80+", label: "Specialists", icon: Users, color: "from-purple-500 to-purple-600" },
-                  { value: "4 Countries", label: "Global Reach", icon: Globe, color: "from-green-500 to-green-600" },
+                  { value: "6 Locations", label: "4 Countries", icon: Globe, color: "from-green-500 to-green-600" },
                   { value: "ISO 9001", label: "Certified", icon: Award, color: "from-amber-500 to-amber-600" }
                 ].map((stat, idx) => (
                   <Card key={idx} className="group relative overflow-hidden border-primary/10 hover:border-primary/30 transition-all hover:-translate-y-2 hover:shadow-xl">
@@ -399,7 +399,7 @@ const Services = () => {
                       { icon: Award, title: "ISO 9001:2015 Certified", desc: "Quality management systems excellence" },
                       { icon: Star, title: "Guinness World Record", desc: "Largest cardboard sculpture achievement" },
                       { icon: Shield, title: "Safety Compliant", desc: "OSHA and local safety standards adherence" },
-                      { icon: TrendingUp, title: "15+ Years Excellence", desc: "Proven track record since 2009" }
+                      { icon: TrendingUp, title: "16+ Years Excellence", desc: "Proven track record since 2009" }
                     ].map((cert, idx) => (
                       <div key={idx} className="flex items-start gap-4 p-4 bg-card/50 rounded-xl border border-primary/10 hover:border-primary/30 transition-all hover:translate-x-2">
                         <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary/20 to-gold/10 flex items-center justify-center flex-shrink-0">
@@ -497,7 +497,7 @@ const Services = () => {
                 {[
                   { value: "1,000+", label: "Projects Completed" },
                   { value: "98%", label: "On-Time Delivery" },
-                  { value: "15+", label: "Years Experience" },
+                  { value: "16+", label: "Years Experience" },
                   { value: "100%", label: "Satisfaction Rate" }
                 ].map((metric, idx) => (
                   <div key={idx} className="bg-card/70 backdrop-blur-sm rounded-xl p-6 border border-primary/20 hover:border-primary/40 transition-all hover:scale-105 text-center shadow-lg">
