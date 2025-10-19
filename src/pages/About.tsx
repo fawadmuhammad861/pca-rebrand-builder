@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, Sparkles, Award, Users, Globe, Building2 } from "lucide-react";
@@ -122,10 +123,10 @@ export default function AboutPage() {
 
       {/* Story */}
       <section className="w-full bg-background py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex lg:justify-between items-center">
-            {/* Left: Text Content */}
-            <div className="animate-on-scroll space-y-8 flex-1 max-w-2xl">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+            {/* Left Corner: Text Content */}
+            <div className="animate-on-scroll space-y-8">
               <div className="space-y-6">
                 <h2 className="font-brand text-5xl md:text-6xl font-bold text-primary leading-tight">
                   Crafting Luxury{" "}
@@ -149,53 +150,48 @@ export default function AboutPage() {
 
               {/* Key Achievements */}
               <div className="grid grid-cols-2 gap-6 pt-8">
-                <div className="text-center p-6 bg-card/50 rounded-xl border border-primary/20">
+                <div className="text-center p-6 bg-card/50 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <div className="text-3xl font-bold text-primary">15+</div>
                   <div className="text-sm text-muted-foreground mt-1">Years of Excellence</div>
                 </div>
-                <div className="text-center p-6 bg-card/50 rounded-xl border border-primary/20">
+                <div className="text-center p-6 bg-card/50 rounded-xl border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <div className="text-3xl font-bold text-primary">120K+</div>
                   <div className="text-sm text-muted-foreground mt-1">Sq Ft Facilities</div>
                 </div>
               </div>
             </div>
 
-            {/* Right: Animated Company Logo - Hidden on mobile */}
-            <div className="animate-on-scroll flex items-center justify-end hidden lg:flex flex-1">
-              <div className="relative w-[600px] h-[600px]">
-                {/* Main Logo Container */}
+            {/* Right Corner: Animated Company Logo */}
+            <div className="animate-on-scroll flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[500px] aspect-square lg:mr-0">
+                {/* Rotating Background Elements */}
+                <div className="absolute inset-0">
+                  <div className="absolute inset-0 border-4 border-primary/10 rounded-full animate-spin" style={{animationDuration: '25s'}}></div>
+                  <div className="absolute inset-12 border-2 border-gold/20 rounded-full animate-spin" style={{animationDuration: '20s', animationDirection: 'reverse'}}></div>
+                  <div className="absolute inset-24 border border-primary/30 rounded-full animate-spin" style={{animationDuration: '15s'}}></div>
+                </div>
+                
+                {/* Center Company Logo */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-[500px] h-[500px]">
-                    {/* Rotating Background Elements */}
-                    <div className="absolute inset-0">
-                      <div className="absolute inset-0 border-4 border-primary/10 rounded-full animate-spin" style={{animationDuration: '25s'}}></div>
-                      <div className="absolute inset-12 border-2 border-gold/20 rounded-full animate-spin" style={{animationDuration: '20s', animationDirection: 'reverse'}}></div>
-                      <div className="absolute inset-24 border border-primary/30 rounded-full animate-spin" style={{animationDuration: '15s'}}></div>
+                  <div className="relative">
+                    {/* Main Logo */}
+                    <div className="w-64 h-64 md:w-80 md:h-80 flex items-center justify-center transform hover:scale-105 transition-transform duration-500 p-8">
+                      <img 
+                        src="/logo.png" 
+                        alt="PCA Private Collection Arabia Logo" 
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                     
-                    {/* Center Company Logo */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="relative">
-                        {/* Main Logo */}
-                        <div className="w-80 h-80 flex items-center justify-center transform hover:scale-105 transition-transform duration-500 p-8">
-                          <img 
-                            src="/logo.png" 
-                            alt="PCA Private Collection Arabia Logo" 
-                            className="w-full h-full object-contain"
-                          />
-                        </div>
-                        
-                        {/* Floating Brand Elements */}
-                        <div className="absolute -top-6 -right-6 w-12 h-12 bg-gold rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{animationDelay: '0s'}}>
-                          <span className="text-white text-lg">🏆</span>
-                        </div>
-                        <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{animationDelay: '1s'}}>
-                          <span className="text-white text-lg">⭐</span>
-                        </div>
-                        <div className="absolute top-1/2 -left-12 w-8 h-8 bg-gold-light rounded-full animate-bounce" style={{animationDelay: '2s'}}></div>
-                        <div className="absolute top-1/2 -right-12 w-8 h-8 bg-primary rounded-full animate-bounce" style={{animationDelay: '3s'}}></div>
-                      </div>
+                    {/* Floating Brand Elements */}
+                    <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-10 h-10 md:w-12 md:h-12 bg-gold rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{animationDelay: '0s'}}>
+                      <span className="text-white text-base md:text-lg">🏆</span>
                     </div>
+                    <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center shadow-lg animate-bounce" style={{animationDelay: '1s'}}>
+                      <span className="text-white text-base md:text-lg">⭐</span>
+                    </div>
+                    <div className="absolute top-1/2 -left-8 md:-left-12 w-6 h-6 md:w-8 md:h-8 bg-gold-light rounded-full animate-bounce" style={{animationDelay: '2s'}}></div>
+                    <div className="absolute top-1/2 -right-8 md:-right-12 w-6 h-6 md:w-8 md:h-8 bg-primary rounded-full animate-bounce" style={{animationDelay: '3s'}}></div>
                   </div>
                 </div>
               </div>
@@ -311,23 +307,25 @@ export default function AboutPage() {
           </div>
 
           <div className="relative mx-auto max-w-4xl">
-            {/* Timeline Line */}
-            <div className="pointer-events-none absolute left-1/2 top-0 -ml-[2px] h-full w-1 bg-gradient-to-b from-primary via-gold to-gold-dark" />
+            {/* Timeline Line - Hidden on mobile, visible on desktop */}
+            <div className="pointer-events-none absolute left-4 md:left-1/2 top-0 md:-ml-[2px] h-full w-1 bg-gradient-to-b from-primary via-gold to-gold-dark" />
             
-            <div className="space-y-20">
+            <div className="space-y-12 md:space-y-20">
               {timeline.map((item, idx) => (
                 <div key={item.year} className="timeline-item group relative animate-on-scroll">
                   {/* Timeline Marker */}
-                  <div className="timeline-marker absolute left-1/2 top-8 -ml-4 h-8 w-8 rounded-full border-4 border-background bg-gradient-to-br from-primary to-gold shadow-xl transition-all duration-300 group-hover:scale-125 group-hover:shadow-2xl">
+                  <div className="timeline-marker absolute left-0 md:left-1/2 top-8 md:-ml-4 h-8 w-8 rounded-full border-4 border-background bg-gradient-to-br from-primary to-gold shadow-xl transition-all duration-300 group-hover:scale-125 group-hover:shadow-2xl">
                     <div className="absolute inset-1 rounded-full bg-white"></div>
                   </div>
                   
                   {/* Timeline Content */}
                   <div
-                    className={`timeline-content relative rounded-3xl border border-primary/20 bg-card p-8 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 ${
+                    className={`timeline-content relative rounded-3xl border border-primary/20 bg-card p-6 md:p-8 shadow-xl transition-all duration-500 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 
+                    ml-12 md:ml-0 text-left
+                    ${
                       idx % 2 === 0
-                        ? "mr-[55%] text-right"
-                        : "ml-[55%] text-left"
+                        ? "md:mr-[55%] md:text-right"
+                        : "md:ml-[55%] md:text-left"
                     }`}
                   >
                     {/* Year Badge */}
@@ -335,10 +333,10 @@ export default function AboutPage() {
                       {item.year}
                     </div>
                     
-                    <h3 className="font-brand text-2xl font-bold text-primary mb-4 group-hover:text-gold transition-colors duration-300">
+                    <h3 className="font-brand text-xl md:text-2xl font-bold text-primary mb-3 md:mb-4 group-hover:text-gold transition-colors duration-300">
                       {item.title}
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed text-lg">{item.description}</p>
+                    <p className="text-muted-foreground leading-relaxed text-base md:text-lg">{item.description}</p>
                     
                     {/* Hover Effect Overlay */}
                     <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -382,30 +380,30 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {team.map((m, index) => (
               <div key={m.name} className={`team-card group animate-on-scroll cursor-pointer transform transition-all duration-500 hover:-translate-y-4 hover:shadow-2xl hover:shadow-primary/20 ${isLoaded ? 'delay-' + (index * 150) : ''}`}>
-                <div className="relative overflow-hidden rounded-3xl bg-card shadow-xl">
+                <div className="relative overflow-hidden rounded-3xl bg-card shadow-xl border-2 border-primary/10 hover:border-primary/30">
                   {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-80 md:h-96 overflow-hidden">
                     <img src={m.image} alt={m.name} className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     
                     {/* Role Badge */}
-                    <div className="absolute top-4 right-4 px-3 py-1 bg-primary/90 text-white text-xs font-semibold rounded-full backdrop-blur-sm">
+                    <div className="absolute top-6 right-6 px-4 py-2 bg-primary/90 text-white text-sm font-semibold rounded-full backdrop-blur-sm">
                       {m.role.split(' ')[0]}
                     </div>
                   </div>
                   
                   {/* Content */}
-                  <div className="p-8 relative">
-                    <h3 className="font-brand text-xl font-bold text-primary mb-2 transition-colors duration-300 group-hover:text-gold">
+                  <div className="p-10 relative">
+                    <h3 className="font-brand text-2xl md:text-3xl font-bold text-primary mb-3 transition-colors duration-300 group-hover:text-gold">
                       {m.name}
                     </h3>
-                    <p className="text-primary/80 font-semibold mb-4 transition-colors duration-300 group-hover:text-primary">
+                    <p className="text-primary/80 font-semibold text-lg mb-5 transition-colors duration-300 group-hover:text-primary">
                       {m.role}
                     </p>
-                    <p className="text-muted-foreground leading-relaxed transition-all duration-300 group-hover:text-foreground">
+                    <p className="text-muted-foreground leading-relaxed text-base md:text-lg transition-all duration-300 group-hover:text-foreground">
                       {m.bio}
                     </p>
                     
@@ -496,20 +494,7 @@ export default function AboutPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-secondary py-10 text-white">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-            <div className="group">
-              <h3 className="font-brand text-xl font-semibold text-primary transition-colors duration-300 group-hover:text-gold-light">Private Collection Arabia</h3>
-              <p className="mt-2 text-muted-foreground transition-colors duration-300 group-hover:text-white">Building iconic retail experiences since 2009</p>
-            </div>
-            <div className="text-center md:text-right">
-              <p className="text-muted-foreground">© 2024 Private Collection Arabia. All rights reserved.</p>
-              <p className="mt-1 text-sm text-muted-foreground/70 transition-colors duration-300 hover:text-primary cursor-default">ISO 9001:2015 Certified</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
@@ -656,28 +641,16 @@ const timeline = [
 
 const team = [
   {
-    name: "Ahmed Al-Rashid",
-    role: "Founder & CEO",
-    bio: "15+ years of luxury retail experience, driving innovation and excellence across all operations.",
+    name: "Muhammad Saleem",
+    role: "Chief Executive Officer",
+    bio: "Visionary leader with 15+ years of luxury retail experience, driving innovation and excellence across all operations and global markets.",
     image: "/resources/workshop-wood.jpg",
   },
   {
-    name: "Sarah Johnson",
-    role: "Creative Director",
-    bio: "Award-winning designer specializing in luxury brand experiences and innovative retail concepts.",
+    name: "Abdul Sattar",
+    role: "General Manager",
+    bio: "Strategic operations expert ensuring seamless project execution, quality standards, and client satisfaction across all facilities.",
     image: "/resources/workshop-metal.jpg",
-  },
-  {
-    name: "Michael Chen",
-    role: "Operations Director",
-    bio: "Ensuring seamless project execution and maintaining our ISO 9001:2015 quality standards.",
-    image: "/resources/workshop-digital.jpg",
-  },
-  {
-    name: "Fatima Al-Zahra",
-    role: "Regional Manager - UAE",
-    bio: "Leading our UAE operations with expertise in luxury retail installations and client relations.",
-    image: "/resources/hero-installation.jpg",
   },
 ];
 
